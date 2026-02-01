@@ -3,7 +3,6 @@ import { CharacterCards } from "./components/CharacterCards";
 import { WhatToExpect } from "./components/WhatToExpect";
 import { ConversationDemo } from "./components/ConversationDemo";
 import { CTA, StartupSection, Footer } from "./components/CTA";
-import { ChaosMeter } from "./components/ChaosMeter";
 import { FloatingStickers } from "./components/FloatingStickers";
 import { EasterEggs } from "./components/EasterEggs";
 import { StickyPhoneBar } from "./components/StickyPhoneBar";
@@ -21,7 +20,6 @@ function AppContent() {
       <StickyPhoneBar />
 
       {/* Game UI Elements */}
-      <ChaosMeter />
       <FloatingStickers />
       <EasterEggs />
 
