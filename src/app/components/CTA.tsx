@@ -408,10 +408,10 @@ export function StartupSection() {
     { value: "∞", label: "Conversations possible", icon: TrendingUp, color: "#ff5e00" },
   ];
 
-  const businessModel = [
-    { title: "Consumer", desc: "Premium personas & extended conversations" },
-    { title: "Enterprise", desc: "White-label AI companions for brands" },
-    { title: "Platform", desc: "Creator tools for custom personalities" },
+  const whatWeAreBuilding = [
+    { title: "Real Conversations", desc: "Not chatbots. Actual back-and-forth dialogue with personality." },
+    { title: "Distinct Voices", desc: "Four unique perspectives, each with their own style and wisdom." },
+    { title: "Phone-First", desc: "No apps, no accounts. Just call and talk." },
   ];
 
   return (
@@ -449,9 +449,9 @@ export function StartupSection() {
             variant="outline"
             className="px-4 py-2 border-2 border-[#04d9ff]/50 bg-[#04d9ff]/10 mb-6"
           >
-            <TrendingUp className="w-4 h-4 text-[#04d9ff] mr-2" />
+            <Heart className="w-4 h-4 text-[#04d9ff] mr-2" />
             <span className="font-mono text-xs uppercase tracking-widest text-[#04d9ff]">
-              For Investors & Partners
+              Why This Exists
             </span>
           </Badge>
 
@@ -513,9 +513,9 @@ export function StartupSection() {
           ))}
         </div>
 
-        {/* Business model */}
+        {/* What we're building */}
         <div className="biz-grid grid md:grid-cols-3 gap-6 mb-16">
-          {businessModel.map((item, i) => (
+          {whatWeAreBuilding.map((item, i) => (
             <div
               key={i}
               className="biz-card p-8 bg-gradient-to-br from-white/5 to-transparent border border-white/10 hover:border-[#dbf226]/50 transition-all duration-300"
@@ -614,12 +614,6 @@ export function Footer() {
     });
   }, { scope: footerRef });
 
-  const socialLinks = [
-    { name: "Twitter", color: "#04d9ff", href: "#" },
-    { name: "Instagram", color: "#ff00c3", href: "#" },
-    { name: "TikTok", color: "#dbf226", href: "#" },
-  ];
-
   return (
     <footer
       ref={footerRef}
@@ -662,30 +656,6 @@ export function Footer() {
             <p className="font-mono text-xs text-white/50 leading-relaxed">
               AI companionship reimagined. Real conversations. Real personality. Real connection.
             </p>
-          </div>
-
-          {/* Social links */}
-          <div className="footer-item flex gap-4">
-            {socialLinks.map(link => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="group relative px-5 py-3 font-mono text-sm font-bold uppercase tracking-widest border-2 border-white/20 hover:border-current transition-all duration-300"
-                style={{
-                  '--hover-color': link.color,
-                } as React.CSSProperties}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = link.color;
-                  e.currentTarget.style.boxShadow = `4px 4px 0px ${link.color}`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '';
-                  e.currentTarget.style.boxShadow = '';
-                }}
-              >
-                <span className="relative z-10">{link.name}</span>
-              </a>
-            ))}
           </div>
 
           {/* Credits section */}
