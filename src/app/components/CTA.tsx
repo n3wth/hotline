@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Phone, ArrowRight, Zap, Sparkles, Star, Heart, AlertTriangle } from "lucide-react";
+import { Phone, ArrowRight, Zap, Sparkles, Star, Heart, AlertTriangle, TrendingUp, Users, Globe, Mic } from "lucide-react";
 import { Button, Badge, NoiseOverlay, useReducedMotion } from "@n3wth/ui";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -346,6 +346,221 @@ export function CTA() {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+export function StartupSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  useGSAP(() => {
+    if (prefersReducedMotion) return;
+
+    // Stagger in the stats
+    gsap.from(".stat-card", {
+      y: 80,
+      opacity: 0,
+      rotationX: -15,
+      stagger: 0.15,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      }
+    });
+
+    // Animate the mission text
+    gsap.from(".mission-text", {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".mission-text",
+        start: "top 85%",
+        toggleActions: "play none none reverse",
+      }
+    });
+
+    // Business model cards
+    gsap.from(".biz-card", {
+      scale: 0.9,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: "back.out(1.5)",
+      scrollTrigger: {
+        trigger: ".biz-grid",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      }
+    });
+
+  }, { scope: sectionRef });
+
+  const stats = [
+    { value: "1B+", label: "Adults report loneliness", icon: Users, color: "#ff00c3" },
+    { value: "4", label: "Distinct AI personalities", icon: Mic, color: "#04d9ff" },
+    { value: "24/7", label: "Always available", icon: Globe, color: "#dbf226" },
+    { value: "∞", label: "Conversations possible", icon: TrendingUp, color: "#ff5e00" },
+  ];
+
+  const businessModel = [
+    { title: "Consumer", desc: "Premium personas & extended conversations" },
+    { title: "Enterprise", desc: "White-label AI companions for brands" },
+    { title: "Platform", desc: "Creator tools for custom personalities" },
+  ];
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative py-32 px-4 bg-[#0a0a0a] text-white overflow-hidden"
+    >
+      {/* Subtle gradient background */}
+      <div
+        className="absolute inset-0 opacity-40"
+        style={{
+          background: `
+            radial-gradient(ellipse at 30% 0%, rgba(4, 217, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(ellipse at 70% 100%, rgba(255, 0, 195, 0.15) 0%, transparent 50%)
+          `
+        }}
+      />
+
+      {/* Grid lines */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px',
+        }}
+      />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <Badge
+            variant="outline"
+            className="px-4 py-2 border-2 border-[#04d9ff]/50 bg-[#04d9ff]/10 mb-6"
+          >
+            <TrendingUp className="w-4 h-4 text-[#04d9ff] mr-2" />
+            <span className="font-mono text-xs uppercase tracking-widest text-[#04d9ff]">
+              For Investors & Partners
+            </span>
+          </Badge>
+
+          <h2 className="font-gothic text-4xl md:text-6xl uppercase mb-6 leading-[0.9]">
+            The Future of{" "}
+            <span
+              className="relative inline-block"
+              style={{
+                background: 'linear-gradient(135deg, #04d9ff, #ff00c3)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              AI Companionship
+            </span>
+          </h2>
+        </div>
+
+        {/* Mission statement */}
+        <div className="mission-text max-w-3xl mx-auto text-center mb-20">
+          <p className="font-mono text-lg md:text-xl text-white/70 leading-relaxed mb-6">
+            Over <span className="text-[#ff00c3] font-bold">1 billion adults</span> worldwide report feeling lonely.
+            We're building the first AI companions you can actually <span className="text-[#dbf226] font-bold">call</span>—real
+            conversations with distinct personalities, available 24/7, no app required.
+          </p>
+          <p className="font-mono text-base text-white/50">
+            Powered by ElevenLabs Conversational AI. Built for the loneliness epidemic.
+          </p>
+        </div>
+
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-20">
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className="stat-card relative p-6 bg-black/50 border-2 border-white/10 hover:border-current transition-colors duration-300 group"
+              style={{ '--hover-color': stat.color } as React.CSSProperties}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = stat.color;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+              }}
+            >
+              <stat.icon
+                className="w-6 h-6 mb-4 transition-colors duration-300"
+                style={{ color: stat.color }}
+              />
+              <div
+                className="font-gothic text-3xl md:text-4xl mb-1"
+                style={{ color: stat.color }}
+              >
+                {stat.value}
+              </div>
+              <div className="font-mono text-xs text-white/50 uppercase tracking-wide">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Business model */}
+        <div className="biz-grid grid md:grid-cols-3 gap-6 mb-16">
+          {businessModel.map((item, i) => (
+            <div
+              key={i}
+              className="biz-card p-8 bg-gradient-to-br from-white/5 to-transparent border border-white/10 hover:border-[#dbf226]/50 transition-all duration-300"
+            >
+              <h3 className="font-syne font-bold text-xl mb-3 text-white">
+                {item.title}
+              </h3>
+              <p className="font-mono text-sm text-white/60">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Tech stack callout */}
+        <div className="text-center">
+          <p className="font-mono text-xs text-white/30 uppercase tracking-widest mb-4">
+            Built With
+          </p>
+          <div className="flex items-center justify-center gap-8 flex-wrap">
+            <a
+              href="https://elevenlabs.io/conversational-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm text-white/50 hover:text-[#04d9ff] transition-colors flex items-center gap-2"
+            >
+              <Mic className="w-4 h-4" />
+              ElevenLabs Conversational AI
+            </a>
+            <span className="text-white/20">|</span>
+            <span className="font-mono text-sm text-white/50 flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              Multi-Persona Architecture
+            </span>
+            <span className="text-white/20">|</span>
+            <span className="font-mono text-sm text-white/50 flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              Phone-First Experience
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Noise texture */}
+      <NoiseOverlay opacity={0.015} className="pointer-events-none" />
     </section>
   );
 }

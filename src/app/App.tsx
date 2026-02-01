@@ -2,7 +2,7 @@ import { Hero } from "./components/Hero";
 import { CharacterCards } from "./components/CharacterCards";
 import { WhatToExpect } from "./components/WhatToExpect";
 import { ConversationDemo } from "./components/ConversationDemo";
-import { CTA, Footer } from "./components/CTA";
+import { CTA, StartupSection, Footer } from "./components/CTA";
 import { ChaosMeter } from "./components/ChaosMeter";
 import { FloatingStickers } from "./components/FloatingStickers";
 import { EasterEggs } from "./components/EasterEggs";
@@ -30,6 +30,7 @@ function AppContent() {
       <WhatToExpect />
       <ConversationDemo />
       <CTA />
+      <StartupSection />
       <Footer />
     </main>
   );
