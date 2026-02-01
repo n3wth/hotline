@@ -290,7 +290,7 @@ export function Hero() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="hero-section relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <section ref={containerRef} className="hero-section relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] pt-16">
 
       {/* Chaos Particles - floating icons */}
       {!prefersReducedMotion && (
