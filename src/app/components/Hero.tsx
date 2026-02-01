@@ -385,7 +385,7 @@ export function Hero() {
         <div className="relative inline-block mb-12 md:mb-16 transform rotate-[1deg] hover:rotate-0 transition-all duration-500 hover:scale-105">
           <div className="hero-tape absolute -top-4 left-1/2 -translate-x-1/2 w-36 h-7 tape" />
           <p className="hero-subtitle font-scribble text-lg md:text-2xl lg:text-3xl bg-black/80 text-white px-6 py-5 border-2 border-dashed border-[#dbf226] shadow-[6px_6px_0px_#dbf226] backdrop-blur-sm">
-            The friend group that tells you what you need to hear.
+            Four AI friends you can actually call. Real voices. Real conversation. No app required.
           </p>
         </div>
 
@@ -430,9 +430,9 @@ export function Hero() {
 
             {/* Scribble Call-to-action - enhanced */}
             <div className="hero-scribble absolute -right-4 md:-right-48 -bottom-20 md:bottom-auto md:top-1/2 md:-translate-y-1/2 font-scribble text-base md:text-xl rotate-[8deg] whitespace-nowrap">
-              <span className="block text-[#ff5e00]">free advice</span>
-              <span className="block text-[#ff5e00]">(worth every penny)</span>
-              <span className="block font-bold text-[#dbf226] text-lg md:text-2xl">→ call us</span>
+              <span className="block text-[#ff5e00]">just dial</span>
+              <span className="block text-[#ff5e00]">(no signup needed)</span>
+              <span className="block font-bold text-[#dbf226] text-lg md:text-2xl">→ talk now</span>
             </div>
 
             {/* Left side decoration */}

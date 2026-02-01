@@ -279,7 +279,7 @@ export function CTA() {
 
                 {/* Main headline */}
                 <h3 className="font-gothic text-5xl md:text-7xl uppercase mb-6 leading-[0.9] text-center">
-                  Ready to{" "}
+                  Skip the{" "}
                   <span
                     className="relative inline-block"
                     style={{
@@ -288,19 +288,18 @@ export function CTA() {
                       WebkitTextFillColor: 'transparent',
                     }}
                   >
-                    Call
+                    Typing
                     <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-[#ff00c3] to-[#ff5e00]" />
                   </span>
-                  ?
                 </h3>
 
                 {/* Subtext */}
                 <p className="font-mono text-base md:text-lg mb-10 text-center leading-relaxed">
                   <span className="block text-gray-600">
-                    The group chat is live. Four voices, zero filter.
+                    Sometimes you just need to talk it out.
                   </span>
                   <span className="block text-gray-600 mt-1">
-                    <span className="text-[#ff5e00] font-bold">They've been waiting for you.</span>
+                    <span className="text-[#ff5e00] font-bold">Pick up the phone. They're listening.</span>
                   </span>
                 </p>
 
@@ -333,7 +332,7 @@ export function CTA() {
 
                 {/* Disclaimer */}
                 <p className="mt-4 font-mono text-[10px] text-gray-400 uppercase tracking-wide text-center">
-                  *Standard carrier rates apply. Side effects may include new perspectives.
+                  Free to call. Side effects may include clarity, laughter, and unsolicited opinions.
                 </p>
               </div>
 
@@ -402,16 +401,16 @@ export function StartupSection() {
   }, { scope: sectionRef });
 
   const stats = [
-    { value: "1B+", label: "Adults report loneliness", icon: Users, color: "#ff00c3" },
-    { value: "4", label: "Distinct AI personalities", icon: Mic, color: "#04d9ff" },
-    { value: "24/7", label: "Always available", icon: Globe, color: "#dbf226" },
-    { value: "∞", label: "Conversations possible", icon: TrendingUp, color: "#ff5e00" },
+    { value: "1B+", label: "People who need someone to talk to", icon: Users, color: "#ff00c3" },
+    { value: "4", label: "Distinct voices to choose from", icon: Mic, color: "#04d9ff" },
+    { value: "24/7", label: "Pick up the phone anytime", icon: Globe, color: "#dbf226" },
+    { value: "0", label: "Apps to download", icon: TrendingUp, color: "#ff5e00" },
   ];
 
   const whatWeAreBuilding = [
-    { title: "Real Conversations", desc: "Not chatbots. Actual back-and-forth dialogue with personality." },
-    { title: "Distinct Voices", desc: "Four unique perspectives, each with their own style and wisdom." },
-    { title: "Phone-First", desc: "No apps, no accounts. Just call and talk." },
+    { title: "Real Conversations", desc: "Back-and-forth dialogue that actually flows. They interrupt, they laugh, they push back." },
+    { title: "Four Perspectives", desc: "A Southern mama. A chaos gremlin. A sharp-tongued villain. A gentle sweetheart. Pick your vibe." },
+    { title: "Phone-First", desc: "Just dial the number. No app store. No login. No friction." },
   ];
 
   return (
@@ -456,7 +455,7 @@ export function StartupSection() {
           </Badge>
 
           <h2 className="font-gothic text-4xl md:text-6xl uppercase mb-6 leading-[0.9]">
-            The Future of{" "}
+            Conversation{" "}
             <span
               className="relative inline-block"
               style={{
@@ -465,7 +464,7 @@ export function StartupSection() {
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              AI Companionship
+              Without Limits
             </span>
           </h2>
         </div>
@@ -473,12 +472,12 @@ export function StartupSection() {
         {/* Mission statement */}
         <div className="mission-text max-w-3xl mx-auto text-center mb-20">
           <p className="font-mono text-lg md:text-xl text-white/70 leading-relaxed mb-6">
-            Over <span className="text-[#ff00c3] font-bold">1 billion adults</span> worldwide report feeling lonely.
-            We're building the first AI companions you can actually <span className="text-[#dbf226] font-bold">call</span>—real
-            conversations with distinct personalities, available 24/7, no app required.
+            More than <span className="text-[#ff00c3] font-bold">1 billion people</span> feel like they have no one to talk to.
+            We built something for those moments—AI friends you can <span className="text-[#dbf226] font-bold">call</span> anytime,
+            who actually listen, have opinions, and talk back like real people.
           </p>
           <p className="font-mono text-base text-white/50">
-            Powered by ElevenLabs Conversational AI. Built for the loneliness epidemic.
+            Voice technology by ElevenLabs. No downloads. No accounts. Just dial.
           </p>
         </div>
 
@@ -654,7 +653,7 @@ export function Footer() {
               <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-[#dbf226] to-transparent" />
             </h4>
             <p className="font-mono text-xs text-white/50 leading-relaxed">
-              AI companionship reimagined. Real conversations. Real personality. Real connection.
+              Voice AI that feels like calling a friend. Not a bot. Not a script.
             </p>
           </div>
 

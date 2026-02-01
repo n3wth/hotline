@@ -13,8 +13,8 @@ const steps = [
     icon: Phone,
     secondaryIcon: Zap,
     title: "You Call",
-    subtitle: "Instant Connection",
-    description: "Dial the number. Someone picks up immediately. No hold music, no waiting. Just a conversation.",
+    subtitle: "Under 5 Seconds",
+    description: "Dial. Someone answers. No menus, no hold music, no 'press 1 for...' Just straight into conversation.",
     rotate: -4,
     color: "#dbf226",
     gradientFrom: "#dbf226",
@@ -25,9 +25,9 @@ const steps = [
     number: "02",
     icon: Users,
     secondaryIcon: AlertTriangle,
-    title: "They Listen",
-    subtitle: "Real Talk",
-    description: "Four distinct personalities. Sally's direct. Viv's discerning. Edward's thoughtful. Jolene brings warmth. Take your pick.",
+    title: "They Talk Back",
+    subtitle: "Not a Script",
+    description: "They remember what you said. They ask follow-up questions. They disagree with you. It's an actual conversation.",
     rotate: 3,
     color: "#ff00c3",
     gradientFrom: "#ff00c3",
@@ -38,9 +38,9 @@ const steps = [
     number: "03",
     icon: LogOut,
     secondaryIcon: Skull,
-    title: "You Decide",
-    subtitle: "Your Call",
-    description: "Hang up whenever. Call back whenever. No subscriptions, no commitments. Just connection on your terms.",
+    title: "You Leave",
+    subtitle: "No Strings",
+    description: "Hang up. No 'before you go...' prompts. No subscription to cancel. Call back in 5 minutes or 5 months.",
     rotate: -2,
     color: "#04d9ff",
     gradientFrom: "#04d9ff",
@@ -441,13 +441,13 @@ export function WhatToExpect() {
 
           <div className="expect-subtitle max-w-sm mt-8 md:mt-0 text-right">
             <p className="text-lg md:text-2xl font-mono text-white/60 leading-relaxed">
-              Three simple steps to
+              Call. Talk. Hang up.
               <br/>
-              <span className="text-[#dbf226]">a real conversation.</span>
+              <span className="text-[#dbf226]">That's literally it.</span>
             </p>
             <p className="mt-4 text-sm font-mono">
-              <span className="text-[#ff00c3] font-bold">24/7.</span>
-              <span className="text-white/30"> Always someone there.</span>
+              <span className="text-[#ff00c3] font-bold">3am Tuesday?</span>
+              <span className="text-white/30"> They'll pick up.</span>
             </p>
           </div>
 
