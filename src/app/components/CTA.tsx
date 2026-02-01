@@ -446,9 +446,6 @@ export function Footer() {
             </h4>
             <p className="font-mono text-xs text-white/50 leading-relaxed">
               AI companionship reimagined. Real conversations. Real personality. Real connection.
-              <span className="block mt-2 text-[#04d9ff]">
-                Built on ElevenLabs Conversational AI.
-              </span>
             </p>
           </div>
 
@@ -478,18 +475,8 @@ export function Footer() {
 
           {/* Credits section */}
           <div className="footer-item text-right">
-            <div className="mb-4 p-3 border border-white/10 bg-white/5 backdrop-blur-sm rounded">
-              <p className="font-mono text-[10px] text-white/60 uppercase tracking-wider mb-2">
-                Built with ElevenLabs
-              </p>
-              <div className="flex flex-wrap justify-end gap-2 text-[9px] font-mono">
-                <span className="px-2 py-1 bg-[#04d9ff]/10 text-[#04d9ff] rounded">Conversational AI</span>
-                <span className="px-2 py-1 bg-[#ff00c3]/10 text-[#ff00c3] rounded">Multi-Voice</span>
-                <span className="px-2 py-1 bg-[#dbf226]/10 text-[#dbf226] rounded">Real-time</span>
-              </div>
-            </div>
             <p className="font-mono text-xs text-white/40 mb-1">
-              Powered by{" "}
+              Built with{" "}
               <a href="https://elevenlabs.io" target="_blank" rel="noopener noreferrer" className="text-white font-bold hover:text-[#04d9ff] transition-colors">
                 ElevenLabs
               </a>
@@ -525,7 +512,7 @@ export function Footer() {
 
         {/* Bottom row */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-white/30 uppercase tracking-wider">
-          <span>© 2024 They Won't Shut Up. All chaos reserved.</span>
+          <span>© 2026 They Won't Shut Up. All rights reserved.</span>
           <span>Visit #{gameState.visitCount} | Chaos Level: {gameState.chaosMeter}%</span>
         </div>
       </div>
