@@ -1,0 +1,1089 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   HOTLINE - CHAOTIC ZINE AESTHETIC
+   Anti-design maximalism meets 90s rave flyer meets punk zine
+   ========================================================================== */
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #f2f2f2;
+
+  /* Core Palette - VIVID & AGGRESSIVE */
+  --acid-green: #dbf226;
+  --hyper-pink: #ff00c3;
+  --electric-blue: #04d9ff;
+  --warm-orange: #ff5e00;
+  --deep-purple: #7c3aed;
+  --blood-red: #ff2d2d;
+
+  /* Extended Palette */
+  --neon-yellow: #ffff00;
+  --toxic-green: #39ff14;
+  --bruise-purple: #9d00ff;
+
+  --tape-color: rgba(255, 255, 255, 0.85);
+
+  /* Glow intensities */
+  --glow-sm: 0 0 10px;
+  --glow-md: 0 0 20px;
+  --glow-lg: 0 0 40px;
+  --glow-xl: 0 0 80px;
+}
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='3' fill='%23dbf226'/%3E%3Ccircle cx='12' cy='12' r='8' stroke='%23ff00c3' stroke-width='1' fill='none'/%3E%3C/svg%3E"), crosshair;
+}
+
+/* Typography Classes */
+.font-syne { font-family: 'Syne', sans-serif; }
+.font-gothic { font-family: 'Dela Gothic One', display; }
+.font-scribble { font-family: 'Gloria Hallelujah', cursive; }
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+.font-unbounded { font-family: 'Unbounded', sans-serif; }
+.font-pixel { font-family: 'Pixelify Sans', sans-serif; }
+.font-instrument { font-family: 'Instrument Serif', serif; }
+
+/* Selection - make it POP */
+::selection {
+  background: var(--hyper-pink);
+  color: white;
+  text-shadow: 2px 2px 0 var(--acid-green);
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR - Brutalist
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+  border-left: 2px solid var(--acid-green);
+  box-shadow: inset 0 0 10px rgba(219, 242, 38, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--acid-green) 0%, var(--hyper-pink) 50%, var(--electric-blue) 100%);
+  border: 2px solid #000;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+  box-shadow: 0 0 15px var(--acid-green);
+}
+
+/* ==========================================================================
+   GLOBAL OVERLAYS - THE CHAOS LAYER
+   ========================================================================== */
+
+/* 1. Grain/Noise - More aggressive */
+.noise-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: noise-shift 0.5s steps(10) infinite;
+}
+
+@keyframes noise-shift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(5%, 5%); }
+  30% { transform: translate(-3%, 3%); }
+  40% { transform: translate(3%, -3%); }
+  50% { transform: translate(-5%, 5%); }
+  60% { transform: translate(5%, -5%); }
+  70% { transform: translate(-3%, -3%); }
+  80% { transform: translate(3%, 3%); }
+  90% { transform: translate(-5%, -5%); }
+}
+
+/* 2. Scanlines - CRT TV effect */
+.scanlines {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.03) 0px,
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 0, 195, 0.01) 0px,
+      rgba(4, 217, 255, 0.01) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  animation: scanline-flicker 0.05s infinite;
+}
+
+@keyframes scanline-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.98; }
+}
+
+/* 3. VHS tracking lines */
+.vhs-tracking {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 45%,
+    rgba(255, 0, 195, 0.03) 45%,
+    rgba(255, 0, 195, 0.03) 55%,
+    transparent 55%,
+    transparent 100%
+  );
+  animation: vhs-scroll 8s linear infinite;
+}
+
+@keyframes vhs-scroll {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* ==========================================================================
+   TEXTURE CLASSES
+   ========================================================================== */
+
+/* Paper Texture */
+.bg-paper {
+  background-color: #f5f5f0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDiffuseLighting lighting-color='white' surfaceScale='2'%3E%3CfeDistantLight azimuth='45' elevation='60'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.5'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 35px,
+      rgba(0, 0, 0, 0.03) 35px,
+      rgba(0, 0, 0, 0.03) 36px
+    );
+}
+
+/* Tape Effect - More realistic */
+.tape {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 200, 0.85) 50%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.2),
+    inset 0 0 20px rgba(255,255,255,0.3);
+  transform: rotate(-2deg);
+  position: absolute;
+  z-index: 20;
+  backdrop-filter: blur(1px);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.tape::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0,0,0,0.02) 2px,
+    rgba(0,0,0,0.02) 4px
+  );
+}
+
+/* Torn Edge */
+.torn-edge {
+  --s: 12px;
+  --c: #000000;
+  mask-image:
+    linear-gradient(to bottom, black 0%, black 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 10 Q10 0, 20 10 T40 10 T60 10 T80 10 T100 10' fill='black'/%3E%3C/svg%3E");
+  mask-size: 100% calc(100% - 10px), 20px 10px;
+  mask-position: 0 0, 0 100%;
+  mask-repeat: no-repeat, repeat-x;
+}
+
+/* ==========================================================================
+   GLITCH EFFECTS
+   ========================================================================== */
+
+/* Main Glitch Text */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  left: 3px;
+  text-shadow: -3px 0 var(--hyper-pink);
+  clip-path: inset(24% 0 29% 0);
+  animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -3px;
+  text-shadow: 3px 0 var(--electric-blue);
+  clip-path: inset(54% 0 21% 0);
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 2px); }
+  10% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -2px); }
+  20% { clip-path: inset(40% 0 50% 0); transform: translate(-1px, 1px); }
+  30% { clip-path: inset(80% 0 5% 0); transform: translate(1px, -1px); }
+  40% { clip-path: inset(10% 0 60% 0); transform: translate(-2px, 2px); }
+  50% { clip-path: inset(30% 0 30% 0); transform: translate(2px, -2px); }
+  60% { clip-path: inset(70% 0 20% 0); transform: translate(-1px, 1px); }
+  70% { clip-path: inset(5% 0 85% 0); transform: translate(1px, -1px); }
+  80% { clip-path: inset(50% 0 40% 0); transform: translate(-2px, 2px); }
+  90% { clip-path: inset(25% 0 65% 0); transform: translate(2px, -2px); }
+  100% { clip-path: inset(35% 0 35% 0); transform: translate(0, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -2px); }
+  10% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 2px); }
+  20% { clip-path: inset(70% 0 10% 0); transform: translate(1px, -1px); }
+  30% { clip-path: inset(20% 0 50% 0); transform: translate(-1px, 1px); }
+  40% { clip-path: inset(60% 0 20% 0); transform: translate(2px, -2px); }
+  50% { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 2px); }
+  60% { clip-path: inset(15% 0 75% 0); transform: translate(1px, -1px); }
+  70% { clip-path: inset(55% 0 35% 0); transform: translate(-1px, 1px); }
+  80% { clip-path: inset(85% 0 5% 0); transform: translate(2px, -2px); }
+  90% { clip-path: inset(45% 0 45% 0); transform: translate(-2px, 2px); }
+  100% { clip-path: inset(25% 0 55% 0); transform: translate(0, 0); }
+}
+
+/* RGB Split on hover */
+.rgb-split {
+  transition: all 0.1s ease;
+}
+
+.rgb-split:hover {
+  text-shadow:
+    -3px 0 var(--hyper-pink),
+    3px 0 var(--electric-blue),
+    0 0 20px var(--acid-green);
+  animation: rgb-shake 0.1s infinite;
+}
+
+@keyframes rgb-shake {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+}
+
+/* ==========================================================================
+   HOLOGRAPHIC & SHINE EFFECTS
+   ========================================================================== */
+
+.holo-foil {
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(219, 242, 38, 0.3) 10%,
+    transparent 20%,
+    rgba(255, 0, 195, 0.3) 30%,
+    transparent 40%,
+    rgba(4, 217, 255, 0.3) 50%,
+    transparent 60%,
+    rgba(255, 94, 0, 0.3) 70%,
+    transparent 80%,
+    rgba(219, 242, 38, 0.3) 90%,
+    transparent 100%
+  );
+  background-size: 400% 400%;
+  animation: holo-shine 4s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+@keyframes holo-shine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Chrome/Metal effect */
+.chrome-text {
+  background: linear-gradient(
+    180deg,
+    #fff 0%,
+    #999 25%,
+    #fff 50%,
+    #666 75%,
+    #fff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.5));
+}
+
+/* ==========================================================================
+   GRADIENT ANIMATIONS
+   ========================================================================== */
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-x {
+  background-size: 200% auto;
+  animation: gradient-x 3s ease infinite;
+}
+
+@keyframes gradient-rotate {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+/* Conic gradient spin */
+.gradient-conic-spin {
+  background: conic-gradient(
+    from var(--gradient-angle, 0deg),
+    var(--acid-green),
+    var(--hyper-pink),
+    var(--electric-blue),
+    var(--warm-orange),
+    var(--acid-green)
+  );
+  animation: gradient-rotate 4s linear infinite;
+}
+
+/* ==========================================================================
+   MOTION ANIMATIONS
+   ========================================================================== */
+
+/* Wiggle */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.3s ease-in-out infinite;
+}
+
+/* Marquee - Endless Loop */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+/* Faster marquee variant */
+.animate-marquee-fast {
+  animation: marquee 12s linear infinite;
+  will-change: transform;
+}
+
+/* Reverse direction marquee */
+.animate-marquee-reverse {
+  animation: marquee 20s linear infinite reverse;
+  will-change: transform;
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(3deg); }
+  75% { transform: translateY(8px) rotate(-3deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse Ring */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Shake */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Bounce In */
+@keyframes bounce-in {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.15); }
+  70% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Slide Up */
+@keyframes slide-up-fade {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up-fade 0.8s ease-out forwards;
+}
+
+/* Spin Slow */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* ==========================================================================
+   CHAOS-REACTIVE STYLES
+   ========================================================================== */
+
+/* Chaos Glitch - Triggered at high chaos */
+@keyframes chaos-glitch {
+  0%, 100% { transform: translate(0); filter: none; }
+  10% { transform: translate(-4px, 2px) skewX(2deg); filter: hue-rotate(90deg); }
+  20% { transform: translate(4px, -2px) skewX(-2deg); filter: hue-rotate(180deg); }
+  30% { transform: translate(-2px, 4px) skewY(2deg); filter: hue-rotate(270deg); }
+  40% { transform: translate(2px, -4px) skewY(-2deg); filter: hue-rotate(360deg); }
+  50% { transform: translate(-4px, -2px); filter: saturate(2); }
+  60% { transform: translate(4px, 2px); filter: saturate(0.5); }
+  70% { transform: translate(-2px, -4px); filter: brightness(1.2); }
+  80% { transform: translate(2px, 4px); filter: brightness(0.8); }
+  90% { transform: translate(-3px, 3px); filter: contrast(1.2); }
+}
+
+.chaos-glitch {
+  animation: chaos-glitch 0.3s ease-in-out;
+}
+
+/* Secret unlock glow */
+@keyframes secret-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--acid-green), 0 0 10px var(--acid-green);
+  }
+  50% {
+    box-shadow:
+      0 0 20px var(--acid-green),
+      0 0 40px var(--hyper-pink),
+      0 0 60px var(--electric-blue);
+  }
+}
+
+.secret-glow {
+  animation: secret-glow 1s ease-in-out infinite;
+}
+
+/* CRT Flicker */
+@keyframes crt-flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 1; }
+  10% { opacity: 0.98; }
+  15% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.9; }
+  94% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.crt-flicker {
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* ==========================================================================
+   STAGGER DELAYS
+   ========================================================================== */
+
+.delay-75 { animation-delay: 75ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* ==========================================================================
+   INTERACTIVE ELEMENTS
+   ========================================================================== */
+
+/* Character Card Draggable */
+.character-card {
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: filter 0.3s ease;
+}
+
+.character-card:active {
+  cursor: grabbing;
+}
+
+.character-card:hover {
+  filter: drop-shadow(0 0 20px var(--acid-green));
+}
+
+/* Button Neon Glow */
+.btn-neon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-neon::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, var(--acid-green), var(--hyper-pink), var(--electric-blue), var(--acid-green));
+  background-size: 400% 100%;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: gradient-x 3s linear infinite;
+}
+
+.btn-neon:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   TEXT SHADOWS & BORDERS
+   ========================================================================== */
+
+.text-shadow-brutal {
+  text-shadow:
+    4px 4px 0 var(--warm-orange),
+    -2px -2px 0 var(--electric-blue),
+    8px 8px 0 rgba(0,0,0,0.3);
+}
+
+.text-shadow-pink {
+  text-shadow: 4px 4px 0 var(--hyper-pink);
+}
+
+.text-shadow-neon {
+  text-shadow:
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 40px currentColor;
+}
+
+.border-brutal {
+  border: 4px solid currentColor;
+  box-shadow: 8px 8px 0 currentColor;
+}
+
+/* ==========================================================================
+   GSAP INITIAL STATES
+   ========================================================================== */
+
+.hero-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE CHAOS - Mobile adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .noise-overlay {
+    opacity: 0.04;
+  }
+
+  .scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.02) 0px,
+      rgba(0, 0, 0, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+}
+
+/* ==========================================================================
+   CHROMATIC ABERRATION & RGB SHIFT
+   ========================================================================== */
+
+.chromatic-shift {
+  position: relative;
+}
+
+.chromatic-shift::before,
+.chromatic-shift::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.chromatic-shift::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--hyper-pink);
+  animation: chromatic-r 3s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.chromatic-shift::after {
+  left: -2px;
+  text-shadow: 2px 0 var(--electric-blue);
+  animation: chromatic-b 3s ease-in-out infinite reverse;
+  opacity: 0.8;
+}
+
+@keyframes chromatic-r {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(2px, 1px); }
+  50% { transform: translate(-1px, 2px); }
+  75% { transform: translate(1px, -1px); }
+}
+
+@keyframes chromatic-b {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(-2px, -1px); }
+  50% { transform: translate(1px, -2px); }
+  75% { transform: translate(-1px, 1px); }
+}
+
+/* ==========================================================================
+   LIQUID DISTORTION
+   ========================================================================== */
+
+@keyframes liquid-warp {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+  }
+  75% {
+    border-radius: 60% 40% 60% 40% / 70% 30% 50% 60%;
+  }
+}
+
+.liquid-blob {
+  animation: liquid-warp 8s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   NEON GLOW EFFECTS - ENHANCED
+   ========================================================================== */
+
+.neon-glow-pink {
+  box-shadow:
+    0 0 5px #ff00c3,
+    0 0 10px #ff00c3,
+    0 0 20px #ff00c3,
+    0 0 40px #ff00c3,
+    inset 0 0 10px rgba(255, 0, 195, 0.2);
+  animation: neon-pulse-pink 2s ease-in-out infinite;
+}
+
+.neon-glow-green {
+  box-shadow:
+    0 0 5px #dbf226,
+    0 0 10px #dbf226,
+    0 0 20px #dbf226,
+    0 0 40px #dbf226,
+    inset 0 0 10px rgba(219, 242, 38, 0.2);
+  animation: neon-pulse-green 2s ease-in-out infinite;
+}
+
+.neon-glow-blue {
+  box-shadow:
+    0 0 5px #04d9ff,
+    0 0 10px #04d9ff,
+    0 0 20px #04d9ff,
+    0 0 40px #04d9ff,
+    inset 0 0 10px rgba(4, 217, 255, 0.2);
+  animation: neon-pulse-blue 2s ease-in-out infinite;
+}
+
+@keyframes neon-pulse-pink {
+  0%, 100% { filter: brightness(1); box-shadow: 0 0 5px #ff00c3, 0 0 10px #ff00c3, 0 0 20px #ff00c3; }
+  50% { filter: brightness(1.2); box-shadow: 0 0 10px #ff00c3, 0 0 20px #ff00c3, 0 0 40px #ff00c3, 0 0 80px #ff00c3; }
+}
+
+@keyframes neon-pulse-green {
+  0%, 100% { filter: brightness(1); box-shadow: 0 0 5px #dbf226, 0 0 10px #dbf226, 0 0 20px #dbf226; }
+  50% { filter: brightness(1.2); box-shadow: 0 0 10px #dbf226, 0 0 20px #dbf226, 0 0 40px #dbf226, 0 0 80px #dbf226; }
+}
+
+@keyframes neon-pulse-blue {
+  0%, 100% { filter: brightness(1); box-shadow: 0 0 5px #04d9ff, 0 0 10px #04d9ff, 0 0 20px #04d9ff; }
+  50% { filter: brightness(1.2); box-shadow: 0 0 10px #04d9ff, 0 0 20px #04d9ff, 0 0 40px #04d9ff, 0 0 80px #04d9ff; }
+}
+
+/* ==========================================================================
+   PIXELATED / RETRO EFFECTS
+   ========================================================================== */
+
+.pixelate {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.retro-shadow {
+  box-shadow:
+    4px 4px 0 #000,
+    8px 8px 0 var(--acid-green),
+    12px 12px 0 #000;
+}
+
+.retro-shadow-pink {
+  box-shadow:
+    4px 4px 0 #000,
+    8px 8px 0 var(--hyper-pink),
+    12px 12px 0 #000;
+}
+
+/* ==========================================================================
+   DISTORTION & WARP
+   ========================================================================== */
+
+@keyframes wave-distort {
+  0%, 100% { transform: translateX(0) skewX(0deg); }
+  25% { transform: translateX(5px) skewX(2deg); }
+  50% { transform: translateX(-3px) skewX(-1deg); }
+  75% { transform: translateX(3px) skewX(1deg); }
+}
+
+.wave-text {
+  animation: wave-distort 4s ease-in-out infinite;
+}
+
+@keyframes jitter {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, 1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(-1px, -1px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, 0); }
+  60% { transform: translate(1px, 0); }
+  70% { transform: translate(0, 1px); }
+  80% { transform: translate(0, -1px); }
+  90% { transform: translate(1px, 1px); }
+}
+
+.jitter {
+  animation: jitter 0.3s steps(10) infinite;
+}
+
+/* ==========================================================================
+   AGGRESSIVE FLICKER
+   ========================================================================== */
+
+@keyframes harsh-flicker {
+  0%, 100% { opacity: 1; }
+  3% { opacity: 0.4; }
+  6% { opacity: 1; }
+  7% { opacity: 0.5; }
+  9% { opacity: 1; }
+  20% { opacity: 0.9; }
+  50% { opacity: 1; }
+  55% { opacity: 0.3; }
+  57% { opacity: 1; }
+  90% { opacity: 0.95; }
+  92% { opacity: 0.4; }
+  95% { opacity: 1; }
+}
+
+.harsh-flicker {
+  animation: harsh-flicker 5s linear infinite;
+}
+
+/* ==========================================================================
+   MATRIX RAIN / DIGITAL RAIN OVERLAY
+   ========================================================================== */
+
+.matrix-rain {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-rain::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 20px,
+      rgba(219, 242, 38, 0.03) 20px,
+      rgba(219, 242, 38, 0.03) 40px
+    );
+  animation: matrix-fall 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes matrix-fall {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0%); }
+}
+
+/* ==========================================================================
+   BURN / HEAT EFFECT
+   ========================================================================== */
+
+@keyframes burn {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+    text-shadow: 0 0 10px var(--warm-orange);
+  }
+  50% {
+    filter: brightness(1.3) saturate(1.5);
+    text-shadow:
+      0 0 20px var(--warm-orange),
+      0 0 40px var(--blood-red),
+      0 0 60px var(--hyper-pink);
+  }
+}
+
+.burn-effect {
+  animation: burn 3s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   3D TEXT DEPTH
+   ========================================================================== */
+
+.text-3d-deep {
+  text-shadow:
+    1px 1px 0 #000,
+    2px 2px 0 #000,
+    3px 3px 0 #000,
+    4px 4px 0 #000,
+    5px 5px 0 #000,
+    6px 6px 0 var(--warm-orange),
+    7px 7px 0 var(--warm-orange),
+    8px 8px 0 var(--warm-orange),
+    9px 9px 15px rgba(0,0,0,0.5);
+}
+
+.text-3d-green {
+  text-shadow:
+    2px 2px 0 #000,
+    4px 4px 0 #000,
+    6px 6px 0 var(--acid-green),
+    8px 8px 0 var(--acid-green),
+    10px 10px 20px rgba(219, 242, 38, 0.4);
+}
+
+/* ==========================================================================
+   OUTLINE TEXT VARIANTS
+   ========================================================================== */
+
+.text-outline {
+  -webkit-text-stroke: 2px currentColor;
+  color: transparent;
+}
+
+.text-outline-white {
+  -webkit-text-stroke: 2px white;
+  color: transparent;
+}
+
+.text-outline-green {
+  -webkit-text-stroke: 3px var(--acid-green);
+  color: transparent;
+}
+
+.text-outline-pink {
+  -webkit-text-stroke: 3px var(--hyper-pink);
+  color: transparent;
+}
+
+/* ==========================================================================
+   GRADIENT TEXT ANIMATIONS
+   ========================================================================== */
+
+.text-gradient-flow {
+  background: linear-gradient(
+    90deg,
+    var(--acid-green) 0%,
+    var(--hyper-pink) 25%,
+    var(--electric-blue) 50%,
+    var(--warm-orange) 75%,
+    var(--acid-green) 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 4s linear infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+/* ==========================================================================
+   NOISE GRAIN OVERLAY - ENHANCED
+   ========================================================================== */
+
+.grain-heavy::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  pointer-events: none;
+  animation: grain 0.5s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* ==========================================================================
+   BORDER ANIMATIONS
+   ========================================================================== */
+
+@keyframes border-dance {
+  0%, 100% {
+    border-color: var(--acid-green);
+    box-shadow: 4px 4px 0 var(--acid-green);
+  }
+  25% {
+    border-color: var(--hyper-pink);
+    box-shadow: 4px 4px 0 var(--hyper-pink);
+  }
+  50% {
+    border-color: var(--electric-blue);
+    box-shadow: 4px 4px 0 var(--electric-blue);
+  }
+  75% {
+    border-color: var(--warm-orange);
+    box-shadow: 4px 4px 0 var(--warm-orange);
+  }
+}
+
+.border-dance {
+  animation: border-dance 4s linear infinite;
+}
+
+/* ==========================================================================
+   HOVER TRANSFORMS
+   ========================================================================== */
+
+.hover-chaos {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-chaos:hover {
+  transform: rotate(-3deg) scale(1.05);
+  filter: saturate(1.3) brightness(1.1);
+}
+
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) rotate(1deg);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.3),
+    0 0 30px var(--acid-green);
+}
+
+/* ==========================================================================
+   REDUCED MOTION - Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .noise-overlay,
+  .scanlines,
+  .vhs-tracking {
+    display: none;
+  }
+}
